@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 420" preserveAspectRatio="none">
+  <defs>
+    <filter id="rough-edge" x="-12%" y="-22%" width="124%" height="144%">
+      <feTurbulence type="fractalNoise" baseFrequency=".018 .09" numOctaves="3" seed="23" result="paint-edge"/>
+      <feDisplacementMap in="SourceGraphic" in2="paint-edge" scale="27" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </defs>
+  <g fill="#f4c430" filter="url(#rough-edge)">
+    <!-- Dense, wide body of the hand-painted slash -->
+    <path d="M28 126l38-32 42 13 25-48 51 29 38-42 48 30 42-37 44 27 47-43 49 32 39-25 47 28 42-39 51 30 44-22 49 37 37-28 48 31 51-18 35 37 46-16 32 35 45-11 30 32 51-4 16 41 42 7-11 38 44 17-29 29 37 23-45 15 15 38-55-3-22 41-43-20-32 45-50-17-41 43-42-27-50 35-39-32-50 28-35-40-55 19-29-45-54 7-19-47-56 11-12-46-59 8-13-47-57 6-12-45-57 9-7-42-53-2-5-40-49-9 10-35-46-17 25-29-33-26 41-19-19-37 55 3z"/>
+    <!-- Thick, dragged brush tails make the silhouette look like wet paint. -->
+    <path d="M77 214c145-33 219 27 342-3s214-22 341 8 246-22 365 3l-20 45c-108-22-223 26-355-1s-236-15-351 5-224-11-336 2z" opacity=".96"/>
+    <path d="M150 81l82 15-41 64-67 7zM392 45l74 20-39 48-66-8zM718 36l96 18-54 62-59-15zM1012 68l100 19-32 49-86-3z" opacity=".92"/>
+    <path d="M89 285l13 92 19-12 8-73zM268 313l4 82 18-23 5-53zM552 307l16 108 17-22-14-84zM849 318l2 70 19-19 3-57zM1081 290l-8 86 22-22 7-54z" opacity=".9"/>
+    <!-- Spatter around the main swath -->
+    <path d="M34 60c16-13 29-4 24 12-3 12-18 18-29 8-6-6-3-14 5-20zm90 285c10-12 25-7 24 5-1 12-15 20-25 12-6-5-5-11 1-17zm162-21c9-10 20-7 19 3-1 9-13 15-21 9-4-4-3-8 2-12zm93-274c7-13 22-11 22 1 0 13-15 21-24 12-4-4-3-8 2-13zm190 308c12-13 25-8 22 4-2 11-17 18-27 9-5-4-3-9 5-13zm166-300c8-12 23-8 21 4-2 11-17 18-26 10-4-4-3-9 5-14zm185 298c12-13 25-6 21 6-4 11-19 15-27 5-4-5-2-8 6-11zm119-250c11-14 24-8 20 4-3 10-17 16-26 8-4-4-2-8 6-12z"/>
+    <circle cx="89" cy="32" r="11"/><circle cx="237" cy="392" r="8"/><circle cx="343" cy="20" r="7"/>
+    <circle cx="474" cy="386" r="12"/><circle cx="642" cy="15" r="8"/><circle cx="778" cy="400" r="9"/>
+    <circle cx="927" cy="23" r="10"/><circle cx="1037" cy="391" r="7"/><circle cx="1162" cy="163" r="12"/>
+    <path d="M4 174l44-10-14 37-30 5zM1152 248l41-15-20 43-28 4zM646 395l27-28 8 38z"/>
+  </g>
+</svg>

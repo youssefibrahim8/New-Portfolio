@@ -1,0 +1,129 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="base" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#e51a3c"/>
+      <stop offset=".42" stop-color="#b80d30"/>
+      <stop offset=".72" stop-color="#28151a"/>
+      <stop offset="1" stop-color="#131619"/>
+    </linearGradient>
+    <radialGradient id="cyanTop" cx=".4" cy=".06" r=".68">
+      <stop stop-color="#ff6574" stop-opacity=".94"/>
+      <stop offset=".48" stop-color="#e51a3c" stop-opacity=".66"/>
+      <stop offset="1" stop-color="#b80d30" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="cyanLeft" cx=".05" cy=".77" r=".66">
+      <stop stop-color="#d71835" stop-opacity=".92"/>
+      <stop offset=".57" stop-color="#b80d30" stop-opacity=".7"/>
+      <stop offset="1" stop-color="#32151a" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="charcoal" cx=".83" cy=".05" r=".78">
+      <stop stop-color="#101316" stop-opacity=".98"/>
+      <stop offset=".5" stop-color="#1a1b1c" stop-opacity=".83"/>
+      <stop offset="1" stop-color="#172126" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="rightRed" cx=".95" cy=".66" r=".58">
+      <stop stop-color="#f7d64a" stop-opacity=".92"/>
+      <stop offset=".45" stop-color="#d9ae18" stop-opacity=".78"/>
+      <stop offset="1" stop-color="#655018" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="paintGrain" x="-10%" y="-10%" width="120%" height="120%">
+      <feTurbulence type="fractalNoise" baseFrequency=".012 .022" numOctaves="4" seed="18" result="rough"/>
+      <feColorMatrix in="rough" type="saturate" values="0" result="gray"/>
+      <feComponentTransfer>
+        <feFuncR type="gamma" amplitude="1.45" exponent="1.6" offset="-.28"/>
+        <feFuncG type="gamma" amplitude="1.45" exponent="1.6" offset="-.28"/>
+        <feFuncB type="gamma" amplitude="1.45" exponent="1.6" offset="-.28"/>
+        <feFuncA type="table" tableValues="0 .58"/>
+      </feComponentTransfer>
+    </filter>
+    <filter id="microGrain" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency=".31" numOctaves="2" seed="7"/>
+      <feColorMatrix type="saturate" values="0"/>
+    </filter>
+    <filter id="dryBrush" x="-10%" y="-10%" width="120%" height="120%">
+      <feTurbulence type="fractalNoise" baseFrequency=".018 .065" numOctaves="3" seed="31" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="32" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </defs>
+  <rect width="1920" height="1080" fill="url(#base)"/>
+  <rect width="1920" height="1080" fill="url(#cyanTop)"/>
+  <rect width="1920" height="1080" fill="url(#cyanLeft)"/>
+  <rect width="1920" height="1080" fill="url(#charcoal)"/>
+  <rect width="1920" height="1080" fill="url(#rightRed)"/>
+
+  <!-- Rough scraped paint patches in the cyan field -->
+  <g filter="url(#dryBrush)" opacity=".25">
+    <path fill="#ff7b88" d="M0 0h720l-46 44 38 20-66 11 34 27-92-8-21 38-69-31-32 53-42-46-59 22-23-54-68 23-7-42-71 8 22-41-74 5z"/>
+    <path fill="#0b0d10" d="M0 592l73-50 31 29 58-74 30 47 57-32 31 85 74-13-12 69 89 6-42 53 52 41-101 8-42 63-61-27-32 69-61-35-61 42-30-69-56 10z"/>
+    <path fill="#101214" d="M1290 0h630v392l-72-29-25-88-71 17-52-68-82 34-9-95-77 20-22-94-68 28z"/>
+    <path fill="#d71935" d="M1045 0l55 35-16 50 53 20-40 37-62-11-37 45-48-44-55 25-14-56 47-33-8-45z"/>
+  </g>
+
+  <!-- Ragged hairline scratches and broken scuffs, not a regular grid -->
+  <g fill="none" stroke-linecap="round" filter="url(#dryBrush)">
+    <g stroke="#ffd0d4" stroke-opacity=".23" stroke-width="4">
+      <path d="M44 104l205 31M102 273l153-22M21 750l253-84M318 70l210 12M422 211l263-75M124 951l288-117M709 58l176 37M1001 44l234 45M1321 127l179-54M1540 311l220-120"/>
+      <path d="M172 414l-69 189M387 365l-92 240M665 92l-63 196M884 218l-117 222M1392 0l-84 171M1773 85l-83 213M1624 610l-69 161M461 805l-72 169"/>
+    </g>
+    <g stroke="#06191f" stroke-opacity=".42" stroke-width="9">
+      <path d="M0 488l265-90M75 532l238-71M266 1017l321-137M508 990l204-80M796 55l181 72M1151 236l214-77M1491 105l209-84M1676 484l234-57M1288 1000l303-155M1730 952l190-82"/>
+      <path d="M249 21l-59 229M545 524l-90 234M1047 141l-85 251M1198 424l-55 231M1573 781l-94 223M1854 279l-60 220"/>
+    </g>
+  </g>
+
+  <!-- Charcoal ink and scraped-black texture, concentrated at the top and edges. -->
+  <g fill="#080d10" opacity=".62" filter="url(#dryBrush)">
+    <path d="M0 0h390l-26 25 42 17-68 21 18 32-74-18-37 47-45-34-49 35-31-40-56 21 9-47-65 4 36-32z"/>
+    <path d="M698 0h1222v356l-41-16-28-65-53 22-21-58-47 31-45-54-57 41-32-64-50 36-34-54-62 36-32-71-54 43-41-72-57 35-30-74-63 29-20-72-59 28-40-53z"/>
+    <path d="M0 646l49-34 38 23 27-51 41 23 29-55 42 34 48-57 39 44 52-24 20 62 54-8-22 58 66 12-50 45 32 49-77 4-18 62-54-31-35 57-48-39-40 47-39-52-52 35-16-55-62 17 10-65-63 5z"/>
+    <path d="M1462 870l72-40 41 32 46-47 37 44 65-40 26 56 80-9 26 77-79 16-50 60-70-35-58 50-46-50-68 19-13-66-63-7z"/>
+    <path d="M1110 63l71-28 48 43-58 33-73-12zM1363 438l84-37 43 39-43 46-82-8zM184 554l66-45 48 29-41 48-67 6zM780 927l58-36 46 31-48 37-62 4z"/>
+  </g>
+  <g fill="none" stroke="#03080b" stroke-linecap="round" filter="url(#dryBrush)">
+    <g stroke-opacity=".68" stroke-width="8">
+      <path d="M0 82l122-48M32 109l177-55M804 0l111 84M910 8l157 52M1058 0l121 74M1224 18l120-63M1444 12l211-42M1670 74l250-99"/>
+      <path d="M0 695l135-82M15 731l177-90M81 1047l182-137M253 1080l198-136M1513 1015l180-127M1734 1080l186-104"/>
+    </g>
+    <g stroke-opacity=".42" stroke-width="3">
+      <path d="M72 8l-43 101M146 0l-67 137M335 3l-65 102M728 0l-47 138M975 0l-92 180M1267 0l-74 150M1578 0l-69 183M1847 0l-34 113"/>
+      <path d="M0 806l176-86M0 858l223-94M34 1005l236-112M1702 911l218-103M1585 1079l190-119"/>
+    </g>
+  </g>
+  <g fill="#050b0e" opacity=".5">
+    <circle cx="79" cy="177" r="18"/><circle cx="222" cy="98" r="11"/><circle cx="302" cy="144" r="8"/>
+    <circle cx="756" cy="61" r="15"/><circle cx="830" cy="102" r="8"/><circle cx="1183" cy="91" r="12"/>
+    <circle cx="1511" cy="113" r="20"/><circle cx="1699" cy="53" r="13"/><circle cx="1880" cy="219" r="17"/>
+    <circle cx="47" cy="914" r="20"/><circle cx="176" cy="1002" r="12"/><circle cx="361" cy="903" r="16"/>
+    <circle cx="588" cy="1039" r="11"/><circle cx="1644" cy="962" r="15"/><circle cx="1814" cy="896" r="10"/>
+  </g>
+
+  <!-- A restrained extra layer of black paint scuffs through the warm fields. -->
+  <g fill="#05080a" opacity=".28" filter="url(#dryBrush)">
+    <path d="M442 82l78-28 53 17-37 22 65 8-82 31-49-10-54 23-28-24 55-18z"/>
+    <path d="M48 388l93-36 45 14-38 26 72-7-60 38-79 10-51 22-34-21 55-26z"/>
+    <path d="M720 930l92-42 54 16-35 27 70 1-75 36-63-10-53 18-39-22 55-18z"/>
+    <path d="M1660 352l82-33 45 19-36 24 57 9-67 31-56-12-43 15-31-21 43-20z"/>
+  </g>
+  <g fill="#030608" opacity=".32">
+    <circle cx="522" cy="154" r="10"/><circle cx="602" cy="109" r="6"/>
+    <circle cx="123" cy="476" r="12"/><circle cx="209" cy="430" r="7"/>
+    <circle cx="824" cy="1002" r="11"/><circle cx="914" cy="958" r="6"/>
+    <circle cx="1744" cy="420" r="10"/><circle cx="1810" cy="372" r="7"/>
+  </g>
+
+  <!-- High-contrast black dry-brush smears in the reference's edge zones. -->
+  <g fill="#000000" opacity=".78" filter="url(#dryBrush)">
+    <path d="M1210 0h710v250l-48-27-31 33-54-28-43 35-49-30-39 25-44-34-51 28-43-39-56 25-43-48-52 16-29-46-56 10-26-48-65 12-17-53-61 3z"/>
+    <path d="M0 748l53-31 31 17 37-45 43 28 39-54 46 28 46-50 37 39 52-20 27 45 55-5 16 53 53 4-30 53 47 33-62 23 21 45-71 2-14 64-57-22-31 62-49-31-40 49-38-48-54 31-25-55-55 11 8-59-62 2 12-55-55-4z"/>
+    <path d="M0 510l61-24 36 19 33-37 42 24 28-30 43 22-42 30-61-7-34 34-47-17-43 21-56-17z"/>
+    <path d="M1510 882l50-30 35 20 35-32 45 25 37-21 51 32-36 26-52-7-40 38-45-15-47 22-39-21z"/>
+  </g>
+  <g fill="none" stroke="#000000" stroke-linecap="round" opacity=".82" filter="url(#dryBrush)">
+    <path stroke-width="18" d="M1330 24l173 48M1496 9l206 54M1690 34l192 30M0 806l178-82M29 875l216-94M112 1035l206-112M0 556l166-51"/>
+    <path stroke-width="7" d="M1378 0l-55 115M1612 0l-67 151M1822 0l-44 112M47 760l-38 116M219 759l-65 161M330 924l-48 133M96 504l-58 80"/>
+  </g>
+
+  <!-- Layered turbulence supplies the fine print-like paper and paint texture. -->
+  <rect width="1920" height="1080" filter="url(#paintGrain)" opacity=".39" style="mix-blend-mode:soft-light"/>
+  <rect width="1920" height="1080" filter="url(#microGrain)" opacity=".12" style="mix-blend-mode:overlay"/>
+</svg>

@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>PORTFOLIO — Command Menu</title>
+  <meta name="description" content="A JRPG-styled portfolio: profile, projects, skills, hobbies and contacts." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ===== Global painterly background (teal grunge + red slashes) ===== -->
+  <div class="stage-bg" aria-hidden="true">
+    <div class="stage-bg__wash"></div>
+    <div class="stage-bg__scratch"></div>
+    <div class="stage-bg__grain"></div>
+
+    <!-- Big red dry-brush slashes, like the reference art -->
+    <svg class="paint paint--tl" viewBox="0 0 600 320" preserveAspectRatio="none">
+      <path d="M0,40 C90,10 170,60 260,30 C360,-2 440,50 540,22 L600,30 L600,170 C520,200 450,150 360,182 C270,214 180,160 90,196 C50,212 20,200 0,206 Z"/>
+      <ellipse cx="120" cy="250" rx="34" ry="12" />
+      <ellipse cx="470" cy="235" rx="22" ry="9" />
+      <circle cx="300" cy="255" r="7" />
+      <circle cx="530" cy="90" r="5" />
+    </svg>
+    <svg class="paint paint--br" viewBox="0 0 620 340" preserveAspectRatio="none">
+      <path d="M620,300 C540,330 460,280 370,312 C280,344 190,296 100,324 C60,336 30,330 0,336 L0,190 C80,160 150,214 240,182 C330,150 420,204 510,168 C550,152 585,162 620,156 Z"/>
+      <ellipse cx="480" cy="120" rx="28" ry="11" />
+      <circle cx="180" cy="140" r="8" />
+      <circle cx="60" cy="110" r="5" />
+    </svg>
+    <svg class="paint paint--mm" viewBox="0 0 400 200" preserveAspectRatio="none">
+      <path d="M10,90 C80,60 150,110 230,74 C300,44 350,80 392,60 L392,140 C340,164 280,130 210,158 C140,186 70,150 10,170 Z"/>
+    </svg>
+  </div>
+
+  <!-- ===== Transition wipe (red slash across the screen) ===== -->
+  <div class="wipe" aria-hidden="true">
+    <div class="wipe__panel wipe__panel--a"></div>
+    <div class="wipe__panel wipe__panel--b"></div>
+    <div class="wipe__panel wipe__panel--c"></div>
+  </div>
+
+  <!-- ===== Persistent chrome ===== -->
+  <div class="chrome">
+    <button class="brand" data-nav="#/" type="button" title="Back to command menu">
+      <span class="brand__mark">◈</span>
+      <span class="brand__text">PLAYER&nbsp;ONE<em>PORTFOLIO</em></span>
+    </button>
+
+    <div class="chrome__right">
+      <button class="sound-toggle" id="soundToggle" type="button" aria-pressed="true" title="Toggle menu sounds">
+        <span class="sound-toggle__icon">♪</span><span class="sound-toggle__label">SOUND ON</span>
+      </button>
+    </div>
+
+    <div class="identity-plaque" aria-label="Youssef Ibrahim, Computer Science at Carleton University">
+      <strong>Youssef Ibrahim</strong>
+      <span>CS at Carleton University</span>
+    </div>
+
+    <nav class="corner-links" aria-label="Social links">
+      <a class="corner-link" href="https://github.com/youssefibrahim8" target="_blank" rel="noopener noreferrer" title="Open GitHub profile">
+        <span class="corner-link__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M12 .9a11.1 11.1 0 0 0-3.51 21.63c.56.1.76-.24.76-.54v-2.1c-3.1.68-3.76-1.32-3.76-1.32-.5-1.28-1.23-1.62-1.23-1.62-1.01-.69.08-.68.08-.68 1.12.08 1.71 1.15 1.71 1.15.99 1.7 2.6 1.21 3.23.93.1-.72.39-1.21.7-1.49-2.47-.28-5.07-1.24-5.07-5.5 0-1.22.43-2.21 1.14-2.99-.11-.28-.49-1.42.11-2.95 0 0 .93-.3 3.05 1.14a10.6 10.6 0 0 1 5.55 0c2.12-1.44 3.05-1.14 3.05-1.14.6 1.53.22 2.67.11 2.95.71.78 1.14 1.77 1.14 2.99 0 4.27-2.6 5.21-5.08 5.49.4.35.75 1.02.75 2.06v3.08c0 .3.2.65.77.54A11.1 11.1 0 0 0 12 .9Z"/></svg>
+        </span>
+        <span class="corner-link__label">GitHub</span>
+      </a>
+      <a class="corner-link" href="https://www.linkedin.com/in/youssef-ibrahim-150074382" target="_blank" rel="noopener noreferrer" title="Open LinkedIn profile">
+        <span class="corner-link__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M5.2 3.1a2.1 2.1 0 1 1 0 4.2 2.1 2.1 0 0 1 0-4.2ZM3.4 9h3.7v11.8H3.4V9Zm5.9 0h3.5v1.6h.1c.5-.9 1.7-2 3.5-2 3.8 0 4.5 2.5 4.5 5.7v6.5h-3.7V15c0-1.4 0-3.2-2-3.2s-2.3 1.5-2.3 3.1v5.9H9.2V9Z"/></svg>
+        </span>
+        <span class="corner-link__label">LinkedIn</span>
+      </a>
+      <button class="corner-link corner-link--email" id="emailCopy" type="button" title="Copy email address">
+        <span class="corner-link__icon corner-link__icon--at" aria-hidden="true">@</span>
+        <span class="corner-link__label">Email</span>
+      </button>
+      <span class="copy-toast" id="copyToast" role="status" aria-live="polite">Copied!</span>
+    </nav>
+
+  </div>
+
+  <main id="app">
+
+    <!-- ================= HOME / COMMAND MENU ================= -->
+    <section class="screen screen--home is-active" id="screen-home" data-screen="/">
+      <div class="hero" aria-hidden="true">
+        <div class="hero__halo"></div>
+        <img class="hero__figure" src="assets/hero-character-cutout-v3.png" alt="" />
+      </div>
+
+      <svg class="guide-lines" aria-hidden="true" viewBox="0 0 1920 1080" preserveAspectRatio="none">
+        <defs>
+          <filter id="brushEdge" x="-10%" y="-30%" width="120%" height="160%">
+            <feTurbulence type="fractalNoise" baseFrequency=".035" numOctaves="2" seed="11" result="roughness" />
+            <feDisplacementMap in="SourceGraphic" in2="roughness" scale="9" xChannelSelector="R" yChannelSelector="G" />
+          </filter>
+          <linearGradient id="lineFadeX" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="#fff" stop-opacity="0" />
+            <stop offset=".24" stop-color="#fff" stop-opacity=".48" />
+            <stop offset=".72" stop-color="#fff" stop-opacity=".32" />
+            <stop offset="1" stop-color="#fff" stop-opacity="0" />
+          </linearGradient>
+          <linearGradient id="lineFadeY" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#fff" stop-opacity="0" />
+            <stop offset=".28" stop-color="#fff" stop-opacity=".48" />
+            <stop offset=".74" stop-color="#fff" stop-opacity=".34" />
+            <stop offset="1" stop-color="#fff" stop-opacity="0" />
+          </linearGradient>
+        </defs>
+        <g fill="none" stroke-linecap="round" stroke-width="1">
+          <path d="M520 0 L1040 1080" stroke="url(#lineFadeY)" />
+          <path d="M0 590 L1920 470" stroke="url(#lineFadeX)" />
+          <path d="M760 1080 L1680 0" stroke="url(#lineFadeY)" />
+          <path d="M1120 870 L1920 820" stroke="url(#lineFadeX)" />
+        </g>
+      </svg>
+
+      <div class="home__head">
+        <p class="eyebrow">— SELECT A COMMAND —</p>
+        <h1 class="home__title">Portfolio</h1>
+      </div>
+
+      <nav class="menu" id="menu" aria-label="Portfolio sections">
+        <!-- Each item: giant angled serif word + yellow slash + tagline on hover -->
+        <a class="menu-item" href="#/profile" data-tagline="AWAKEN IDENTITY">
+          <span class="menu-item__splash" aria-hidden="true">
+            <svg viewBox="0 0 600 160" preserveAspectRatio="none">
+              <path d="M8,58 C64,36 122,70 192,50 C262,30 332,66 420,46 C482,32 542,56 592,42 L596,106 C540,124 470,100 400,118 C330,136 250,108 170,126 C110,139 50,120 6,132 Z"/>
+              <ellipse cx="70" cy="150" rx="26" ry="7"/>
+              <ellipse cx="540" cy="22" rx="20" ry="6"/>
+              <circle cx="330" cy="146" r="5"/>
+              <circle cx="600" cy="120" r="4"/>
+            </svg>
+          </span>
+          <span class="menu-item__word">Profile</span>
+          <span class="menu-item__tag">AWAKEN IDENTITY</span>
+        </a>
+
+        <a class="menu-item" href="#/projects" data-tagline="QUEST LOG">
+          <span class="menu-item__splash" aria-hidden="true">
+            <svg viewBox="0 0 600 160" preserveAspectRatio="none">
+              <path d="M8,58 C64,36 122,70 192,50 C262,30 332,66 420,46 C482,32 542,56 592,42 L596,106 C540,124 470,100 400,118 C330,136 250,108 170,126 C110,139 50,120 6,132 Z"/>
+              <ellipse cx="70" cy="150" rx="26" ry="7"/>
+              <ellipse cx="540" cy="22" rx="20" ry="6"/>
+              <circle cx="330" cy="146" r="5"/>
+              <circle cx="600" cy="120" r="4"/>
+            </svg>
+          </span>
+          <span class="menu-item__word">Projects</span>
+          <span class="menu-item__tag">QUEST LOG</span>
+        </a>
+
+        <a class="menu-item" href="#/skills" data-tagline="ARCHETYPE TREE">
+          <span class="menu-item__splash" aria-hidden="true">
+            <svg viewBox="0 0 600 160" preserveAspectRatio="none">
+              <path d="M8,58 C64,36 122,70 192,50 C262,30 332,66 420,46 C482,32 542,56 592,42 L596,106 C540,124 470,100 400,118 C330,136 250,108 170,126 C110,139 50,120 6,132 Z"/>
+              <ellipse cx="70" cy="150" rx="26" ry="7"/>
+              <ellipse cx="540" cy="22" rx="20" ry="6"/>
+              <circle cx="330" cy="146" r="5"/>
+              <circle cx="600" cy="120" r="4"/>
+            </svg>
+          </span>
+          <span class="menu-item__word">Skills</span>
+          <span class="menu-item__tag">ARCHETYPE TREE</span>
+        </a>
+
+        <a class="menu-item" href="#/experience" data-tagline="BATTLE HISTORY">
+          <span class="menu-item__splash" aria-hidden="true">
+            <svg viewBox="0 0 600 160" preserveAspectRatio="none">
+              <path d="M8,58 C64,36 122,70 192,50 C262,30 332,66 420,46 C482,32 542,56 592,42 L596,106 C540,124 470,100 400,118 C330,136 250,108 170,126 C110,139 50,120 6,132 Z"/>
+              <ellipse cx="70" cy="150" rx="26" ry="7"/>
+              <ellipse cx="540" cy="22" rx="20" ry="6"/>
+              <circle cx="330" cy="146" r="5"/>
+              <circle cx="600" cy="120" r="4"/>
+            </svg>
+          </span>
+          <span class="menu-item__word">Experience</span>
+          <span class="menu-item__tag">BATTLE HISTORY</span>
+        </a>
+
+        <a class="menu-item" href="#/hobbies" data-tagline="SIDE STORIES">
+          <span class="menu-item__splash" aria-hidden="true">
+            <svg viewBox="0 0 600 160" preserveAspectRatio="none">
+              <path d="M8,58 C64,36 122,70 192,50 C262,30 332,66 420,46 C482,32 542,56 592,42 L596,106 C540,124 470,100 400,118 C330,136 250,108 170,126 C110,139 50,120 6,132 Z"/>
+              <ellipse cx="70" cy="150" rx="26" ry="7"/>
+              <ellipse cx="540" cy="22" rx="20" ry="6"/>
+              <circle cx="330" cy="146" r="5"/>
+              <circle cx="600" cy="120" r="4"/>
+            </svg>
+          </span>
+          <span class="menu-item__word">Hobbies</span>
+          <span class="menu-item__tag">SIDE STORIES</span>
+        </a>
+
+        <a class="menu-item" href="#/contacts" data-tagline="SEND A PACT">
+          <span class="menu-item__splash" aria-hidden="true">
+            <svg viewBox="0 0 600 160" preserveAspectRatio="none">
+              <path d="M8,58 C64,36 122,70 192,50 C262,30 332,66 420,46 C482,32 542,56 592,42 L596,106 C540,124 470,100 400,118 C330,136 250,108 170,126 C110,139 50,120 6,132 Z"/>
+              <ellipse cx="70" cy="150" rx="26" ry="7"/>
+              <ellipse cx="540" cy="22" rx="20" ry="6"/>
+              <circle cx="330" cy="146" r="5"/>
+              <circle cx="600" cy="120" r="4"/>
+            </svg>
+          </span>
+          <span class="menu-item__word">Contacts</span>
+          <span class="menu-item__tag">SEND A PACT</span>
+        </a>
+      </nav>
+
+    </section>
+
+    <!-- ================= PROFILE ================= -->
+    <section class="screen screen--view" id="screen-profile" data-screen="profile">
+      <div class="view">
+        <header class="view__head">
+          <a class="back" href="#/" data-nav="#/"><i>B</i> Back</a>
+          <h2 class="view__title"><span class="view__title-splash" aria-hidden="true"></span>Profile</h2>
+          <p class="view__sub">AWAKEN IDENTITY · STATUS SCREEN</p>
+        </header>
+
+        <div class="view__body profile-grid">
+          <!-- EDIT: your intro -->
+          <article class="card card--bio reveal">
+            <h3 class="card__title">Origin</h3>
+            <p class="card__lead">Hey — I'm <strong>Your Name</strong>, a full-stack developer who builds bold, fast, and slightly cinematic web experiences.</p>
+            <p>I care about clean interfaces, smooth motion and shipping things that actually work. When a project needs both design taste and engineering discipline, that's where I come in.</p>
+            <ul class="facts">
+              <li><span>CLASS</span>Full-Stack Developer</li>
+              <li><span>BASE</span>Your City, Country</li>
+              <li><span>STATUS</span>Open to work</li>
+              <li><span>LANGS</span>English · Another Language</li>
+            </ul>
+          </article>
+
+          <article class="card card--stats reveal">
+            <h3 class="card__title">Vitals</h3>
+            <div class="stat"><span class="stat__name">Craft</span><span class="stat__bar"><i style="--v:92%"></i></span><b>92</b></div>
+            <div class="stat"><span class="stat__name">Creativity</span><span class="stat__bar"><i style="--v:88%"></i></span><b>88</b></div>
+            <div class="stat"><span class="stat__name">Reliability</span><span class="stat__bar"><i style="--v:95%"></i></span><b>95</b></div>
+            <div class="stat"><span class="stat__name">Speed</span><span class="stat__bar"><i style="--v:84%"></i></span><b>84</b></div>
+            <div class="stat"><span class="stat__name">Teamwork</span><span class="stat__bar"><i style="--v:90%"></i></span><b>90</b></div>
+            <p class="card__note">Currently equipping: curiosity + too much coffee.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= PROJECTS ================= -->
+    <section class="screen screen--view" id="screen-projects" data-screen="projects">
+      <div class="view">
+        <header class="view__head">
+          <a class="back" href="#/" data-nav="#/"><i>B</i> Back</a>
+          <h2 class="view__title"><span class="view__title-splash" aria-hidden="true"></span>Projects</h2>
+          <p class="view__sub">QUEST LOG · SELECT A CONTRACT</p>
+        </header>
+
+        <div class="view__body quest-grid">
+          <!-- EDIT: repeat a .quest card for each project -->
+          <article class="quest reveal">
+            <div class="quest__rank">S</div>
+            <div class="quest__body">
+              <h3>Nebula Dashboard</h3>
+              <p>Realtime analytics dashboard with live charts, dark neon UI and sub-100ms interactions.</p>
+              <ul class="tags"><li>React</li><li>Node</li><li>WebSocket</li></ul>
+              <div class="quest__links"><a href="#" target="_blank" rel="noopener">▶ Live</a><a href="#" target="_blank" rel="noopener">◈ Code</a></div>
+            </div>
+          </article>
+
+          <article class="quest reveal">
+            <div class="quest__rank">A</div>
+            <div class="quest__body">
+              <h3>Kanji Quest</h3>
+              <p>A gamified language-learning app with streaks, spaced repetition and boss battles.</p>
+              <ul class="tags"><li>TypeScript</li><li>Next.js</li><li>PWA</li></ul>
+              <div class="quest__links"><a href="#" target="_blank" rel="noopener">▶ Live</a><a href="#" target="_blank" rel="noopener">◈ Code</a></div>
+            </div>
+          </article>
+
+          <article class="quest reveal">
+            <div class="quest__rank">A</div>
+            <div class="quest__body">
+              <h3>Studio Rouge</h3>
+              <p>Portfolio site for a design studio: brutalist layout, painterly transitions, buttery scroll.</p>
+              <ul class="tags"><li>Vue</li><li>GSAP</li><li>SCSS</li></ul>
+              <div class="quest__links"><a href="#" target="_blank" rel="noopener">▶ Live</a><a href="#" target="_blank" rel="noopener">◈ Code</a></div>
+            </div>
+          </article>
+
+          <article class="quest reveal">
+            <div class="quest__rank">B</div>
+            <div class="quest__body">
+              <h3>Forge API</h3>
+              <p>REST + GraphQL backend powering auth, payments and webhooks for a small e-commerce.</p>
+              <ul class="tags"><li>Python</li><li>FastAPI</li><li>Postgres</li></ul>
+              <div class="quest__links"><a href="#" target="_blank" rel="noopener">▶ Live</a><a href="#" target="_blank" rel="noopener">◈ Code</a></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SKILLS ================= -->
+    <section class="screen screen--view" id="screen-skills" data-screen="skills">
+      <div class="view">
+        <header class="view__head">
+          <a class="back" href="#/" data-nav="#/"><i>B</i> Back</a>
+          <h2 class="view__title"><span class="view__title-splash" aria-hidden="true"></span>Skills</h2>
+          <p class="view__sub">ARCHETYPE TREE · UNLOCKED ABILITIES</p>
+        </header>
+
+        <div class="view__body skill-grid">
+          <!-- EDIT: your real skill levels -->
+          <article class="tree reveal">
+            <h3 class="tree__name">Frontend</h3>
+            <ul class="tree__chips"><li>HTML/CSS</li><li>JavaScript</li><li>TypeScript</li><li>React</li><li>Vue</li><li>Animation</li></ul>
+            <div class="mastery"><span>Mastery</span><span class="mastery__bar"><i style="--v:94%"></i></span><b>94</b></div>
+          </article>
+
+          <article class="tree reveal">
+            <h3 class="tree__name">Backend</h3>
+            <ul class="tree__chips"><li>Node</li><li>Python</li><li>REST</li><li>GraphQL</li><li>Postgres</li><li>MongoDB</li></ul>
+            <div class="mastery"><span>Mastery</span><span class="mastery__bar"><i style="--v:86%"></i></span><b>86</b></div>
+          </article>
+
+          <article class="tree reveal">
+            <h3 class="tree__name">Tooling</h3>
+            <ul class="tree__chips"><li>Git</li><li>Docker</li><li>CI/CD</li><li>Vite</li><li>AWS</li><li>Figma</li></ul>
+            <div class="mastery"><span>Mastery</span><span class="mastery__bar"><i style="--v:81%"></i></span><b>81</b></div>
+          </article>
+
+          <article class="tree reveal">
+            <h3 class="tree__name">Soft Skills</h3>
+            <ul class="tree__chips"><li>Communication</li><li>Mentoring</li><li>Planning</li><li>UI Sense</li></ul>
+            <div class="mastery"><span>Mastery</span><span class="mastery__bar"><i style="--v:90%"></i></span><b>90</b></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= EXPERIENCE ================= -->
+    <section class="screen screen--view" id="screen-experience" data-screen="experience">
+      <div class="view">
+        <header class="view__head">
+          <a class="back" href="#/" data-nav="#/"><i>B</i> Back</a>
+          <h2 class="view__title"><span class="view__title-splash" aria-hidden="true"></span>Experience</h2>
+          <p class="view__sub">BATTLE HISTORY · CLEARED CONTRACTS</p>
+        </header>
+
+        <div class="view__body timeline">
+          <!-- EDIT: your real jobs / studies -->
+          <article class="tl reveal">
+            <div class="tl__year">2024 — NOW</div>
+            <div class="tl__card">
+              <h3>Full-Stack Developer <em>@ Studio Name</em></h3>
+              <p>Shipped customer-facing apps, led the design system, cut load times by 45%.</p>
+            </div>
+          </article>
+
+          <article class="tl reveal">
+            <div class="tl__year">2022 — 2024</div>
+            <div class="tl__card">
+              <h3>Frontend Developer <em>@ Company</em></h3>
+              <p>Built component libraries, improved accessibility scores, mentored two juniors.</p>
+            </div>
+          </article>
+
+          <article class="tl reveal">
+            <div class="tl__year">2021 — 2022</div>
+            <div class="tl__card">
+              <h3>Intern / Junior <em>@ Agency</em></h3>
+              <p>Landing pages, e-commerce themes, and a very steep learning curve.</p>
+            </div>
+          </article>
+
+          <article class="tl reveal">
+            <div class="tl__year">2018 — 2022</div>
+            <div class="tl__card">
+              <h3>BSc Computer Science <em>@ University</em></h3>
+              <p>Algorithms, databases, HCI — plus a lot of side projects.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= HOBBIES ================= -->
+    <section class="screen screen--view" id="screen-hobbies" data-screen="hobbies">
+      <div class="view">
+        <header class="view__head">
+          <a class="back" href="#/" data-nav="#/"><i>B</i> Back</a>
+          <h2 class="view__title"><span class="view__title-splash" aria-hidden="true"></span>Hobbies</h2>
+          <p class="view__sub">SIDE STORIES · OUTSIDE THE CODE</p>
+        </header>
+
+        <div class="view__body hobby-grid">
+          <!-- EDIT: your real hobbies -->
+          <article class="hobby reveal"><span class="hobby__icon">🎮</span><h3>Gaming</h3><p>JRPGs, roguelikes and anything with a great menu UI (clearly).</p></article>
+          <article class="hobby reveal"><span class="hobby__icon">🎧</span><h3>Music</h3><p>Lo-fi while coding, loud playlists while cooking.</p></article>
+          <article class="hobby reveal"><span class="hobby__icon">🎨</span><h3>Drawing</h3><p>Doodles, character sketches and UI explorations.</p></article>
+          <article class="hobby reveal"><span class="hobby__icon">⚽</span><h3>Football</h3><p>Weekend matches — and too many opinions about tactics.</p></article>
+          <article class="hobby reveal"><span class="hobby__icon">📷</span><h3>Photography</h3><p>Street shots and moody night frames.</p></article>
+          <article class="hobby reveal"><span class="hobby__icon">✈️</span><h3>Travel</h3><p>New cities, new food, new inspiration.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CONTACTS ================= -->
+    <section class="screen screen--view" id="screen-contacts" data-screen="contacts">
+      <div class="view">
+        <header class="view__head">
+          <a class="back" href="#/" data-nav="#/"><i>B</i> Back</a>
+          <h2 class="view__title"><span class="view__title-splash" aria-hidden="true"></span>Contacts</h2>
+          <p class="view__sub">ESTABLISH A LINK · RESPONSE TIME: FAST</p>
+        </header>
+
+        <div class="view__body contact-grid">
+          <article class="card reveal">
+            <h3 class="card__title">Send a message</h3>
+            <!-- EDIT: hook this up to Formspree / Netlify forms / your backend -->
+            <form class="form" id="contactForm" novalidate>
+              <label>Name<input type="text" name="name" placeholder="Your name" required /></label>
+              <label>Email<input type="email" name="email" placeholder="you@email.com" required /></label>
+              <label>Message<textarea name="message" rows="4" placeholder="Tell me about the quest…" required></textarea></label>
+              <button class="btn" type="submit"><span>Send Pact</span></button>
+              <p class="form__status" id="formStatus" role="status"></p>
+            </form>
+          </article>
+
+          <article class="card card--links reveal">
+            <h3 class="card__title">Direct channels</h3>
+            <!-- EDIT: your real links -->
+            <a class="channel" href="mailto:you@email.com"><i>✉</i><span>Email<b>you@email.com</b></span></a>
+            <a class="channel" href="#" target="_blank" rel="noopener"><i>◈</i><span>GitHub<b>github.com/yourname</b></span></a>
+            <a class="channel" href="#" target="_blank" rel="noopener"><i>in</i><span>LinkedIn<b>linkedin.com/in/yourname</b></span></a>
+            <a class="channel" href="#" target="_blank" rel="noopener"><i>✦</i><span>X / Twitter<b>@yourhandle</b></span></a>
+            <p class="card__note">Available for freelance & full-time roles.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
