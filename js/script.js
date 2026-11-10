@@ -144,6 +144,10 @@
       }
     });
     window.scrollTo({ top: 0, behavior: "auto" });
+    document.querySelectorAll(".top-nav__link").forEach((link) => {
+      if (target.dataset.screen === link.dataset.section) link.setAttribute("aria-current", "page");
+      else link.removeAttribute("aria-current");
+    });
     document.title =
       target === home
         ? "PORTFOLIO — Command Menu"
@@ -292,7 +296,5 @@
   /* ---------------------------------------------------------
      BOOT — respect any deep link in the URL
      --------------------------------------------------------- */
-  if (location.hash && location.hash !== "#/") {
-    activate(screenFor(location.hash));
-  }
+  activate(screenFor(location.hash));
 })();
