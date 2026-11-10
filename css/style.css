@@ -1746,3 +1746,59 @@ body:has(.screen--home.is-active) .top-nav { display: none; }
 @media (prefers-reduced-motion: reduce) {
   .intro-screen, .intro-screen__content, .intro-screen__enter { animation: none; transition-duration: .01ms; }
 }
+
+/* Keep the portfolio completely out of view until the intro is dismissed. */
+body:not(.intro-entering):not(.intro-dismissed) #app,
+body:not(.intro-entering):not(.intro-dismissed) .chrome,
+body:not(.intro-entering):not(.intro-dismissed) .stage-bg,
+body:not(.intro-entering):not(.intro-dismissed) .wipe {
+  visibility: hidden;
+}
+
+/* The title screen is an opaque layer; its colored light stays self-contained. */
+.intro-screen {
+  z-index: 2000;
+  background-color: #071316;
+  background-image:
+    radial-gradient(ellipse at 50% 45%, rgba(12, 64, 68, .48), transparent 53%),
+    linear-gradient(112deg, #071316 0%, #082d31 56%, #241313 100%);
+}
+
+/* On entry, let the home scene arrive in staggered panels beneath the fading title. */
+.screen--home.is-arriving .hero {
+  animation: hero-slide-in .95s cubic-bezier(.18, .78, .22, 1) both, portrait-float 5.6s ease-in-out .95s infinite;
+}
+.screen--home.is-arriving .menu-item {
+  animation: menu-slide-in .72s cubic-bezier(.16, .82, .24, 1) both;
+}
+.screen--home.is-arriving .menu-item:nth-child(1) { animation-delay: .04s; }
+.screen--home.is-arriving .menu-item:nth-child(2) { animation-delay: .11s; }
+.screen--home.is-arriving .menu-item:nth-child(3) { animation-delay: .18s; }
+.screen--home.is-arriving .menu-item:nth-child(4) { animation-delay: .25s; }
+.screen--home.is-arriving .menu-item:nth-child(5) { animation-delay: .32s; }
+.screen--home.is-arriving .menu-item:nth-child(6) { animation-delay: .39s; }
+body.intro-entering .identity-plaque { animation: plaque-slide-in .72s cubic-bezier(.16, .82, .24, 1) .2s both; }
+body.intro-entering .corner-links { animation: links-slide-in .72s cubic-bezier(.16, .82, .24, 1) .32s both; }
+
+@keyframes hero-slide-in {
+  from { translate: 105vw 0; }
+  to { translate: 0 0; }
+}
+@keyframes menu-slide-in {
+  from { translate: -110vw 0; opacity: 0; }
+  to { translate: 0 0; opacity: 1; }
+}
+@keyframes plaque-slide-in {
+  from { translate: 110% 0; opacity: 0; }
+  to { translate: 0 0; opacity: 1; }
+}
+@keyframes links-slide-in {
+  from { translate: 0 110%; opacity: 0; }
+  to { translate: 0 0; opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .screen--home.is-arriving .hero,
+  .screen--home.is-arriving .menu-item,
+  body.intro-entering .identity-plaque,
+  body.intro-entering .corner-links { animation: none; }
+}

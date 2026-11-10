@@ -19,23 +19,25 @@
   const screens = [...document.querySelectorAll(".screen")];
   const introScreen = document.getElementById("introScreen");
   const introEnter = document.getElementById("introEnter");
-  const introSeenKey = "youssef-portfolio-intro-seen";
-  let introOpen = false;
+  let introOpen = Boolean(introScreen);
   if (introScreen) {
-    try {
-      introOpen = sessionStorage.getItem(introSeenKey) !== "yes";
-    } catch (error) {
-      introOpen = true;
-    }
-    if (!introOpen) introScreen.hidden = true;
+    introScreen.hidden = false;
   }
 
   function dismissIntro() {
     if (!introScreen || !introOpen) return;
     introOpen = false;
-    try { sessionStorage.setItem(introSeenKey, "yes"); } catch (error) { /* keep this visit usable */ }
+    document.body.classList.add("intro-entering");
+    if (home && home.classList.contains("is-active")) {
+      home.classList.add("is-arriving");
+      window.setTimeout(() => home.classList.remove("is-arriving"), 1200);
+    }
     introScreen.classList.add("is-leaving");
-    window.setTimeout(() => { introScreen.hidden = true; }, 650);
+    window.setTimeout(() => {
+      introScreen.hidden = true;
+      document.body.classList.add("intro-dismissed");
+      window.setTimeout(() => document.body.classList.remove("intro-entering"), 500);
+    }, 650);
   }
 
   if (introEnter) introEnter.addEventListener("click", dismissIntro);
@@ -46,6 +48,7 @@
     document.addEventListener("keydown", (event) => {
       if (!introOpen || event.altKey || event.ctrlKey || event.metaKey) return;
       event.preventDefault();
+      event.stopImmediatePropagation();
       dismissIntro();
     }, true);
   }
