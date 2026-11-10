@@ -255,8 +255,8 @@
     }
   });
 
-  /* ---------------------------------------------------------
-     CONTACT FORM (front-end only demo handler)
+    /* ---------------------------------------------------------
+     CONTACT FORM — open a prefilled email draft
      --------------------------------------------------------- */
   const form = document.getElementById("contactForm");
   const status = document.getElementById("formStatus");
@@ -280,11 +280,12 @@
         return;
       }
 
-      // Hook up Formspree / Netlify / your API here.
-      status.textContent = "✔ Message dispatched — I'll reply soon!";
+      const subject = `Portfolio message from ${name}`;
+      const body = `Name: ${name}\nEmail: ${email}\n\n${message}`;
+      status.textContent = "Your email draft is ready — press Send in your mail app.";
       status.style.color = "#37d67a";
       sfxConfirm();
-      form.reset();
+      window.location.href = `mailto:yimgi09@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     });
   }
 
