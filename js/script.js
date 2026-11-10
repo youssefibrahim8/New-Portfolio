@@ -17,6 +17,38 @@
   const items = [...document.querySelectorAll(".menu-item")];
   const heroFigure = document.querySelector(".hero__figure");
   const screens = [...document.querySelectorAll(".screen")];
+  const introScreen = document.getElementById("introScreen");
+  const introEnter = document.getElementById("introEnter");
+  const introSeenKey = "youssef-portfolio-intro-seen";
+  let introOpen = false;
+  if (introScreen) {
+    try {
+      introOpen = sessionStorage.getItem(introSeenKey) !== "yes";
+    } catch (error) {
+      introOpen = true;
+    }
+    if (!introOpen) introScreen.hidden = true;
+  }
+
+  function dismissIntro() {
+    if (!introScreen || !introOpen) return;
+    introOpen = false;
+    try { sessionStorage.setItem(introSeenKey, "yes"); } catch (error) { /* keep this visit usable */ }
+    introScreen.classList.add("is-leaving");
+    window.setTimeout(() => { introScreen.hidden = true; }, 650);
+  }
+
+  if (introEnter) introEnter.addEventListener("click", dismissIntro);
+  if (introScreen) {
+    introScreen.addEventListener("click", (event) => {
+      if (event.target === introScreen || event.target.classList.contains("intro-screen__veil")) dismissIntro();
+    });
+    document.addEventListener("keydown", (event) => {
+      if (!introOpen || event.altKey || event.ctrlKey || event.metaKey) return;
+      event.preventDefault();
+      dismissIntro();
+    }, true);
+  }
 
   let focusIndex = 0;
   let isWiping = false;

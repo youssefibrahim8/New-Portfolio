@@ -1670,3 +1670,79 @@ body:has(.screen--home.is-active) .sound-toggle { display: none; }
   .top-nav__link { padding: 9px 11px; font-size: 11px; letter-spacing: .09em; }
   .screen--view { padding-top: 128px; }
 }
+/* First-visit title screen */
+body:has(.screen--home.is-active) .top-nav { display: none; }
+.intro-screen[hidden] { display: none !important; }
+.intro-screen {
+  position: fixed; inset: 0; z-index: 1000; display: grid; place-items: center;
+  overflow: hidden; isolation: isolate; color: var(--paper);
+  background:
+    radial-gradient(ellipse at 50% 45%, rgba(12, 64, 68, .48), transparent 53%),
+    linear-gradient(112deg, rgba(5, 12, 17, .97) 0%, rgba(8, 45, 49, .96) 56%, rgba(36, 19, 19, .96) 100%);
+  opacity: 1; transition: opacity .6s ease, visibility .6s ease;
+}
+.intro-screen::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background:
+    repeating-linear-gradient(118deg, transparent 0 64px, rgba(255,255,255,.045) 65px, transparent 66px 142px),
+    radial-gradient(ellipse at 84% 83%, rgba(244,196,48,.18), transparent 38%),
+    radial-gradient(ellipse at 12% 24%, rgba(77,208,196,.22), transparent 42%);
+  mix-blend-mode: screen;
+}
+.intro-screen__veil {
+  position: absolute; inset: -18% auto -18% -7%; z-index: -1; width: 30%;
+  background: linear-gradient(155deg, rgba(244,196,48,.08), rgba(6,19,23,.44));
+  border-right: 1px solid rgba(244,241,234,.12);
+  clip-path: polygon(0 0, 100% 0, 68% 100%, 0 100%);
+}
+.intro-screen__sideword {
+  position: absolute; left: -1.5vw; bottom: -5vh; color: rgba(244,241,234,.045);
+  font: 900 clamp(84px, 14vw, 220px)/.8 var(--serif); letter-spacing: .05em;
+  writing-mode: vertical-rl; transform: rotate(180deg); pointer-events: none;
+}
+.intro-screen__content {
+  position: relative; z-index: 1; width: min(1100px, 92vw); padding: 40px 20px;
+  text-align: center; animation: intro-arrive .8s var(--ease-snap) both;
+}
+.intro-screen__eyebrow {
+  margin-bottom: clamp(14px, 3vh, 30px); color: var(--teal);
+  font: 700 clamp(11px, 1.3vw, 16px)/1.4 var(--sans); letter-spacing: .38em; text-transform: uppercase;
+}
+.intro-screen__name {
+  margin: 0 auto clamp(30px, 6vh, 62px); color: var(--paper);
+  font: italic 900 clamp(76px, 17vw, 220px)/.92 var(--serif); letter-spacing: -.035em;
+  text-shadow: 9px 9px 0 var(--red), 18px 18px 0 rgba(0,0,0,.32);
+}
+.intro-screen__enter {
+  display: inline-flex; align-items: center; justify-content: center; gap: 28px;
+  min-width: min(390px, 84vw); padding: 17px 25px; color: var(--black);
+  background: var(--paper); border: 0; border-bottom: 7px solid var(--red);
+  clip-path: polygon(10px 0, 100% 0, calc(100% - 12px) 100%, 0 100%);
+  cursor: pointer; font: 800 clamp(15px, 2vw, 21px)/1.1 var(--sans);
+  letter-spacing: .12em; text-transform: uppercase;
+  transition: transform .2s ease, background .2s ease;
+}
+.intro-screen__enter:hover, .intro-screen__enter:focus-visible {
+  background: var(--red-hot); transform: translateY(-3px);
+}
+.intro-screen__enter:focus-visible { outline: 2px solid #fff; outline-offset: 4px; }
+.intro-screen__enter span { color: var(--red-deep); font-size: 1.3em; }
+.intro-screen__hint, .intro-screen__corner {
+  color: rgba(244,241,234,.66); font: 500 12px/1.4 var(--sans); letter-spacing: .2em; text-transform: uppercase;
+}
+.intro-screen__hint { margin-top: 20px; }
+.intro-screen__corner { position: absolute; right: 24px; bottom: 20px; }
+.intro-screen.is-leaving { opacity: 0; visibility: hidden; pointer-events: none; }
+@keyframes intro-arrive {
+  from { opacity: 0; transform: translateY(22px) scale(.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+@media (max-width: 560px) {
+  .intro-screen__sideword { left: -8vw; font-size: 22vw; }
+  .intro-screen__name { font-size: clamp(70px, 20vw, 116px); text-shadow: 5px 6px 0 var(--red), 10px 11px 0 rgba(0,0,0,.32); }
+  .intro-screen__eyebrow { letter-spacing: .22em; }
+  .intro-screen__corner { right: 14px; bottom: 14px; font-size: 10px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .intro-screen, .intro-screen__content, .intro-screen__enter { animation: none; transition-duration: .01ms; }
+}
